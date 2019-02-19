@@ -1,13 +1,14 @@
 use rand::thread_rng;
 use rand::seq::SliceRandom;
+use rand::Rng;
 
 // TODO accept cli args
 fn main() {
-    let mut vec = Vec::new();
-    vec.push(4);
-    vec.push(2);
-    vec.push(1);
-    vec.push(3);
+    let mut rng = rand::thread_rng();
+    let mut vec: Vec<i64> = (0..4).map(|_| {
+        // 1 (inclusive) to 21 (exclusive)
+        rng.gen_range(1, 21)
+    }).collect();
 
     println!("Sorting {:?}", vec);
     monkey_sort(&mut vec);
@@ -25,8 +26,8 @@ fn monkey_sort_helper<T>(v: &mut Vec<T>, i: u64) -> &mut Vec<T>
     where
         T: Ord,
 {
+    println!("{}th shuffle", i);
     if is_sorted(v) {
-        println!("Shuffed {} times", i);
         return v
     }
     let mut rng = thread_rng();
