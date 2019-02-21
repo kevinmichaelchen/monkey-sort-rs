@@ -9,5 +9,11 @@ while not isInOrder(deck):
 You can run the program by running:
 ```
 make
+
+# sort an array of 4 elements
+cargo run 4
+
+# sort an array of 6 elements
+cargo run 6
 ```
 

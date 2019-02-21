@@ -1,4 +1,4 @@
 .PHONY: all
 all:
 	cargo build
-	cargo run
+	cargo run 4
